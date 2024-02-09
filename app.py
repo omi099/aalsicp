@@ -42,7 +42,7 @@ def run_script():
                 token = token[token_start_index:]
                 return render_template('index.html', token=token)
             else:
-                return "Token starting with 'eyJ' not found in the response."
+                return "Token not found in the response."
         else:
             return "Token not found in the response."
     else:
