@@ -50,4 +50,5 @@ def run_script():
         return "Request failed with status code:", response.status_code
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    gunicorn -w 4 -b 0.0.0.0:5000 app:app
+
