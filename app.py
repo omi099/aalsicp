@@ -1,11 +1,17 @@
 from flask import Flask, render_template, jsonify
 import requests
 import json
+import os
 
 app = Flask(__name__)
 
 @app.route('/')
 def run_script():
+    refresh_token = os.getenv("REFRESH_TOKEN")
+    
+    if not refresh_token:
+        return "Refresh token not found in environment variables."
+
     headers = {
         'Host': 'api.classplusapp.com',
         'user-agent': 'Mobile-Android',
@@ -18,8 +24,9 @@ def run_script():
         'content-type': 'application/json; charset=UTF-8',
         'accept-encoding': 'gzip',
     }
+    
     data = {
-        'refreshToken': 'your_refresh_token_here',
+        'refreshToken': refresh_token,
         'orgId': 298976
     }
 
@@ -43,4 +50,3 @@ def run_script():
 
 if __name__ == '__main__':
     app.run(debug=True)
-￼Enter
