@@ -40,6 +40,7 @@ def run_script():
             token_start_index = token.find("eyJ")
             if token_start_index != -1:
                 token = token[token_start_index:]
+                print(token)
                 return render_template('index.html', token=token)
             else:
                 return "Token not found in the response."
